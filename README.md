@@ -54,7 +54,7 @@
 ### Backend
 
 - [x] Set up NestJS with pnpm and Node.js 22
-- [ ] Integrate PostgreSQL using sqlc and DB Mate
+- [x] Integrate PostgreSQL using sqlc and DB Mate
 - [ ] Implement Zod-based validation flow
 - [ ] Add Redis integration
 - [ ] Implement JWT-based login system
@@ -93,3 +93,29 @@ pnpm db:query:gen
 # 6. Start the development server
 pnpm dev
 ```
+
+## 🗃️ Database Operation
+
+```bash
+# Generate a new migration file
+$ pnpm db:new
+
+# Migrate the database
+$ pnpm db:up
+
+# Rollback the most recent migration
+$ pnpm db:down
+
+# Dump schema for sqlc to use, postgresql@17 is a dependency, and database connection with up-to-date schema is required
+$ pnpm db:dump
+```
+
+Environment varialbe `DATABASE_URL` is needed for database operation.
+
+To update the database schema, use `db:new` to generate a new migration sql file, write the migration sql, and run `db:up` to bring it to effect.
+
+To write databas interaction logic, write sql queries in `db/query.sql` as sqlc specifies.
+
+To update the sqlc generated query functions, use `db:dump` to sync with the latest database first, then use `db:query:gen` to generate a new version of query functions.
+
+For a database connection in module, import `PostgresModule`.
