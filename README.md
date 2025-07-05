@@ -55,7 +55,7 @@
 
 - [x] Set up NestJS with pnpm and Node.js 22
 - [x] Integrate PostgreSQL using sqlc and DB Mate
-- [ ] Implement Zod-based validation flow
+- [x] Implement Zod-based validation flow
 - [ ] Add Redis integration
 - [ ] Implement JWT-based login system
 
