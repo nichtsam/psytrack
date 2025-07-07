@@ -23,6 +23,15 @@ export class UserService {
     if (existingUser) {
       throw new UserError('EMAIL_ALREADY_USED', 'This email is already in use');
     }
-    return createUser(this.postgresService.sql, args);
+
+    const user = await createUser(this.postgresService.sql, args);
+
+    if (!user) {
+      throw new Error(
+        'This should not happen. A user must be returned, or the transaction should throw.',
+      );
+    }
+
+    return user;
   }
 }

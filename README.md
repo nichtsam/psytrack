@@ -57,7 +57,7 @@
 - [x] Integrate PostgreSQL using sqlc and DB Mate
 - [x] Implement Zod-based validation flow
 - [ ] Add Redis integration
-- [ ] Implement JWT-based login system
+- [x] Implement JWT-based login system
 
 ## Getting Started
 

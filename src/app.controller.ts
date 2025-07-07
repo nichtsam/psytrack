@@ -1,7 +1,9 @@
 import { Controller, Get } from '@nestjs/common';
-import * as packageJson from '../package.json';
+import { Public } from './common/decorators/public.decorator';
 import { ApiExcludeEndpoint } from '@nestjs/swagger';
+import * as packageJson from '../package.json';
 
+@Public()
 @Controller()
 export class AppController {
   @ApiExcludeEndpoint()

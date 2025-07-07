@@ -3,16 +3,24 @@ import { UserService } from 'src/user/user.service';
 import { LoginDto, SignupDto } from './auth.dto';
 import * as argon2 from 'argon2';
 import { AuthError } from './auth.error';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthService {
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private jwtService: JwtService,
+  ) {}
 
   async signup(dto: SignupDto) {
-    return this.userService.create({
+    const user = await this.userService.create({
       email: dto.email,
       hash: await this.hashPassword(dto.password),
     });
+
+    return {
+      accessToken: this.signToken(user.id),
+    };
   }
   async login(dto: LoginDto) {
     const user = await this.userService.getByEmail(dto.email);
@@ -21,7 +29,9 @@ export class AuthService {
       throw new AuthError('UNAUTHORIZED', 'Invalid username or password');
     }
 
-    return user;
+    return {
+      accessToken: this.signToken(user.id),
+    };
   }
 
   private async hashPassword(password: string): Promise<string> {
@@ -33,5 +43,9 @@ export class AuthService {
     password: string,
   ): Promise<boolean> {
     return await argon2.verify(hash, password);
+  }
+
+  private signToken(userId: string) {
+    return this.jwtService.sign({ sub: userId });
   }
 }
