@@ -29,6 +29,19 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
+-- Name: psyche_events; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.psyche_events (
+    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    user_id uuid NOT NULL,
+    metadata jsonb NOT NULL,
+    happened_at timestamp with time zone NOT NULL,
+    created_at timestamp with time zone DEFAULT now() NOT NULL
+);
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -48,6 +61,14 @@ CREATE TABLE public.users (
     created_at timestamp with time zone DEFAULT now() NOT NULL,
     updated_at timestamp with time zone DEFAULT now() NOT NULL
 );
+
+
+--
+-- Name: psyche_events psyche_events_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.psyche_events
+    ADD CONSTRAINT psyche_events_pkey PRIMARY KEY (id);
 
 
 --
@@ -75,10 +96,25 @@ ALTER TABLE ONLY public.users
 
 
 --
+-- Name: idx_psyche_events_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_psyche_events_user_id ON public.psyche_events USING btree (user_id);
+
+
+--
 -- Name: users set_updated_at; Type: TRIGGER; Schema: public; Owner: -
 --
 
 CREATE TRIGGER set_updated_at BEFORE UPDATE ON public.users FOR EACH ROW EXECUTE FUNCTION public.trigger_set_updated_at();
+
+
+--
+-- Name: psyche_events psyche_events_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.psyche_events
+    ADD CONSTRAINT psyche_events_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(id) ON DELETE CASCADE;
 
 
 --
@@ -91,4 +127,5 @@ CREATE TRIGGER set_updated_at BEFORE UPDATE ON public.users FOR EACH ROW EXECUTE
 --
 
 INSERT INTO public.schema_migrations (version) VALUES
-    ('20250705202520');
+    ('20250705202520'),
+    ('20250708221039');

@@ -94,3 +94,62 @@ export async function createUser(sql: Sql, args: CreateUserArgs): Promise<Create
     };
 }
 
+export const getAllExperiencesByUserIdQuery = `-- name: GetAllExperiencesByUserId :many
+SELECT id, user_id, metadata, happened_at, created_at FROM psyche_events
+WHERE user_id = $1`;
+
+export interface GetAllExperiencesByUserIdArgs {
+    userId: string;
+}
+
+export interface GetAllExperiencesByUserIdRow {
+    id: string;
+    userId: string;
+    metadata: any;
+    happenedAt: Date;
+    createdAt: Date;
+}
+
+export async function getAllExperiencesByUserId(sql: Sql, args: GetAllExperiencesByUserIdArgs): Promise<GetAllExperiencesByUserIdRow[]> {
+    return (await sql.unsafe(getAllExperiencesByUserIdQuery, [args.userId]).values()).map(row => ({
+        id: row[0],
+        userId: row[1],
+        metadata: row[2],
+        happenedAt: row[3],
+        createdAt: row[4]
+    }));
+}
+
+export const createExperienceQuery = `-- name: CreateExperience :one
+INSERT INTO psyche_events (user_id, metadata, happened_at) VALUES ($1, $2, $3)
+RETURNING id, user_id, metadata, happened_at, created_at`;
+
+export interface CreateExperienceArgs {
+    userId: string;
+    metadata: any;
+    happenedAt: Date;
+}
+
+export interface CreateExperienceRow {
+    id: string;
+    userId: string;
+    metadata: any;
+    happenedAt: Date;
+    createdAt: Date;
+}
+
+export async function createExperience(sql: Sql, args: CreateExperienceArgs): Promise<CreateExperienceRow | null> {
+    const rows = await sql.unsafe(createExperienceQuery, [args.userId, args.metadata, args.happenedAt]).values();
+    if (rows.length !== 1) {
+        return null;
+    }
+    const row = rows[0];
+    return {
+        id: row[0],
+        userId: row[1],
+        metadata: row[2],
+        happenedAt: row[3],
+        createdAt: row[4]
+    };
+}
+
