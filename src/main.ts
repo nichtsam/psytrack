@@ -9,6 +9,7 @@ patchNestJsSwagger();
 
 const doc = (app: INestApplication) =>
   apiReference({
+    persistAuth: true,
     spec: {
       content: SwaggerModule.createDocument(
         app,
