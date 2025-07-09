@@ -23,12 +23,13 @@
 #### User Module
 
 - User registration and profile update
-- Password hashing (bcrypt)
+- Password hashing (argon2)
 - Fetch and update current user information
 
-#### Mental Module
+#### Psyche Module
 
-- Create and retrieve mental event records
+- Create and retrieve psyche event records
+- Supports storing diverse mental events with structured metadata
 
 #### LLM Module
 
@@ -56,8 +57,12 @@
 - [x] Set up NestJS with pnpm and Node.js 22
 - [x] Integrate PostgreSQL using sqlc and DB Mate
 - [x] Implement Zod-based validation flow
-- [ ] Add Redis integration
+- [ ] Add Redis integration (primary for caching and token management)
 - [x] Implement JWT-based login system
+- [x] Implement Basic Psyche Module to create and retrieve psyche events
+- [ ] Implement Effect Event for Psyche Module to track various psyche events that affect mental state
+- [ ] Write comprehensive Unit Tests for core modules
+- [ ] Set up CI/CD pipelines for automated testing and deployment
 
 ## Getting Started
 
