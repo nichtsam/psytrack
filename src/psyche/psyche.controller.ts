@@ -9,12 +9,13 @@ export class PsycheController {
   constructor(private psycheService: PsycheService) {}
 
   @ApiOperation({
-    summary: 'Retrieve all experience records',
-    description: 'Fetch all past experiences that triggered emotions',
+    summary: 'Retrieve all psyche events records',
+    description:
+      'Fetch all past events that triggered emotions or affected mental state',
   })
   @Get('/experiences')
-  getExperiences(@UserId() userId: string) {
-    return this.psycheService.getAllExperiencesByUserId(userId);
+  getPsycheEvents(@UserId() userId: string) {
+    return this.psycheService.getAllPsycheEventsByUserId(userId);
   }
 
   @ApiOperation({

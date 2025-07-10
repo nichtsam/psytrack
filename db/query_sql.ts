@@ -94,15 +94,15 @@ export async function createUser(sql: Sql, args: CreateUserArgs): Promise<Create
     };
 }
 
-export const getAllExperiencesByUserIdQuery = `-- name: GetAllExperiencesByUserId :many
+export const getAllPsycheEventsByUserIdQuery = `-- name: GetAllPsycheEventsByUserId :many
 SELECT id, user_id, metadata, happened_at, created_at FROM psyche_events
 WHERE user_id = $1`;
 
-export interface GetAllExperiencesByUserIdArgs {
+export interface GetAllPsycheEventsByUserIdArgs {
     userId: string;
 }
 
-export interface GetAllExperiencesByUserIdRow {
+export interface GetAllPsycheEventsByUserIdRow {
     id: string;
     userId: string;
     metadata: any;
@@ -110,8 +110,8 @@ export interface GetAllExperiencesByUserIdRow {
     createdAt: Date;
 }
 
-export async function getAllExperiencesByUserId(sql: Sql, args: GetAllExperiencesByUserIdArgs): Promise<GetAllExperiencesByUserIdRow[]> {
-    return (await sql.unsafe(getAllExperiencesByUserIdQuery, [args.userId]).values()).map(row => ({
+export async function getAllPsycheEventsByUserId(sql: Sql, args: GetAllPsycheEventsByUserIdArgs): Promise<GetAllPsycheEventsByUserIdRow[]> {
+    return (await sql.unsafe(getAllPsycheEventsByUserIdQuery, [args.userId]).values()).map(row => ({
         id: row[0],
         userId: row[1],
         metadata: row[2],
@@ -120,17 +120,17 @@ export async function getAllExperiencesByUserId(sql: Sql, args: GetAllExperience
     }));
 }
 
-export const createExperienceQuery = `-- name: CreateExperience :one
+export const createPsycheEventQuery = `-- name: CreatePsycheEvent :one
 INSERT INTO psyche_events (user_id, metadata, happened_at) VALUES ($1, $2, $3)
 RETURNING id, user_id, metadata, happened_at, created_at`;
 
-export interface CreateExperienceArgs {
+export interface CreatePsycheEventArgs {
     userId: string;
     metadata: any;
     happenedAt: Date;
 }
 
-export interface CreateExperienceRow {
+export interface CreatePsycheEventRow {
     id: string;
     userId: string;
     metadata: any;
@@ -138,8 +138,8 @@ export interface CreateExperienceRow {
     createdAt: Date;
 }
 
-export async function createExperience(sql: Sql, args: CreateExperienceArgs): Promise<CreateExperienceRow | null> {
-    const rows = await sql.unsafe(createExperienceQuery, [args.userId, args.metadata, args.happenedAt]).values();
+export async function createPsycheEvent(sql: Sql, args: CreatePsycheEventArgs): Promise<CreatePsycheEventRow | null> {
+    const rows = await sql.unsafe(createPsycheEventQuery, [args.userId, args.metadata, args.happenedAt]).values();
     if (rows.length !== 1) {
         return null;
     }

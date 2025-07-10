@@ -10,11 +10,11 @@ WHERE email = $1 LIMIT 1;
 INSERT INTO users (email, hash) VALUES ($1, $2)
 RETURNING *;
 
--- name: GetAllExperiencesByUserId :many
+-- name: GetAllPsycheEventsByUserId :many
 SELECT * FROM psyche_events
 WHERE user_id = $1;
 
--- name: CreateExperience :one
+-- name: CreatePsycheEvent :one
 INSERT INTO psyche_events (user_id, metadata, happened_at) VALUES ($1, $2, $3)
 RETURNING *;
 

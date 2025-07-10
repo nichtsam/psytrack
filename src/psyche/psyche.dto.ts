@@ -1,14 +1,8 @@
 import { createZodDto } from 'nestjs-zod';
 import { z } from 'zod';
+import { ExperienceSchema } from './psyche.schema';
 
-const EmotionSchema = z.object({
-  emotionLabel: z.string(),
-  intensity: z.number().min(1).max(10),
-});
-
-const AddExperienceSchema = z.object({
-  activatingEvent: z.string(),
-  emotions: z.array(EmotionSchema).nonempty(),
+const AddExperienceSchema = ExperienceSchema.omit({ type: true }).extend({
   happenedAt: z.coerce.date(),
 });
 
