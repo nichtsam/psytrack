@@ -9,9 +9,9 @@ import {
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginDto, SignupDto } from './auth.dto';
-import { UserError } from 'src/user/user.error';
+import { UserError } from '#src/user/user.error';
 import { AuthError } from './auth.error';
-import { Public } from 'src/common/decorators/public.decorator';
+import { Public } from '#src/common/decorators/public.decorator';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 
 @Public()

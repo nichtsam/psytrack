@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { UserId } from 'src/common/decorators/userId.decorator';
+import { UserId } from '#src/common/decorators/userId.decorator';
 import { AddExperienceDto } from './psyche.dto';
 import { ApiOperation } from '@nestjs/swagger';
 import { PsycheService } from './psyche.service';

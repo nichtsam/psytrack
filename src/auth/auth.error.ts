@@ -1,4 +1,4 @@
-import { AppError } from 'src/app.error';
+import { AppError } from '#src/app.error';
 
 type AuthErrorCode = 'UNAUTHORIZED';
 

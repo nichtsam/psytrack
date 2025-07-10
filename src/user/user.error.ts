@@ -1,4 +1,4 @@
-import { AppError } from 'src/app.error';
+import { AppError } from '#src/app.error';
 
 type UserErrorCode = 'EMAIL_ALREADY_USED';
 
