@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { UserService } from 'src/user/user.service';
+import { UserService } from '#src/user/user.service';
 import { LoginDto, SignupDto } from './auth.dto';
 import * as argon2 from 'argon2';
 import { AuthError } from './auth.error';

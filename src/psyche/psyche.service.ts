@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { PostgresService } from 'src/db.module';
+import { PostgresService } from '#src/db.module';
 import { AddExperienceDto } from './psyche.dto';
-import { createPsycheEvent, getAllPsycheEventsByUserId } from 'db/query_sql';
+import { createPsycheEvent, getAllPsycheEventsByUserId } from '#db/query_sql';
 import { Experience } from './psyche.schema';
 
 @Injectable()
