@@ -3,3 +3,4 @@ onlyBuiltDependencies:
   - '@scarf/scarf'
   - '@swc/core'
   - argon2
+  - esbuild
