@@ -33,3 +33,4 @@
 - [System Overview](docs/backend/system-overview.md) - Overview of backend modules and responsibilities
 - [Getting Started](docs/backend/getting-started.md) - Backend setup and initial run instructions
 - [Database Guide](docs/backend/database-guide.md) - How to interact with the database, migrations, and sqlc usage
+- [LLM Architecture](docs/backend/llm-architecture.md) - Design and integration details of the LLM service
