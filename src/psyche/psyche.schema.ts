@@ -7,10 +7,9 @@ export const EmotionSchema = z.object({
 });
 
 export const ExperienceSchema = z.object({
-  type: z.literal('experience'),
   activatingEvent: z.string(),
   emotions: z.array(EmotionSchema).nonempty(),
-  note: z.string().optional(),
+  summary: z.string().optional(),
 });
 
 export type Experience = z.infer<typeof ExperienceSchema>;
