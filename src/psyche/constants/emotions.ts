@@ -1,4 +1,7 @@
 export const emotions = [
+  'desire',
+  'attachment',
+  'hope',
   'contentment',
   'joy',
   'excitement',
@@ -10,7 +13,6 @@ export const emotions = [
   'fear',
   'fatigue',
   'emptiness',
-  'jealousy',
   'disgust',
 ] as const;
 
@@ -19,52 +21,64 @@ type EmotionConfig = {
 };
 
 export const emotionConfig: Record<(typeof emotions)[number], EmotionConfig> = {
+  desire: {
+    description:
+      ' A forward-pulling feeling like longing or wanting, often driving action or pursuit of change.                         ',
+  },
+  attachment: {
+    description:
+      ' A sense of emotional connection or bonding with others or things, often motivating care, loyalty, and responsibility. ',
+  },
+  hope: {
+    description:
+      ' A positive feeling about the possibility of improvement or a better future.                                           ',
+  },
   contentment: {
     description:
-      'A deep sense of life satisfaction, including feelings of safety, love, and connection.',
+      ' A sense of life satisfaction, including feelings of safety, love, and connection.                                     ',
   },
   joy: {
     description:
-      'Immediate feelings of happiness, pleasure, and lightheartedness.',
+      ' A state of lightheartedness, pleasure, or spontaneous happiness.                                                      ',
   },
   excitement: {
     description:
-      'Feelings of curiosity, anticipation, desire to act, freshness, and surprise.',
+      ' A sense of curiosity, anticipation, or a desire to act, often sparked by novelty or potential.                        ',
   },
   anger: {
     description:
-      'Feelings of boundary violation, unfairness, and desire to confront or resist.',
+      ' A feeling of violation or unfairness, often accompanied by an impulse to resist or confront.                          ',
   },
   sadness: {
-    description: 'Feelings of emotional heaviness, low mood, or sorrow.',
+    description:
+      ' A sense of emotional heaviness, low mood, or sorrow.                                                                  ',
   },
   loss: {
     description:
-      'Feelings of having lost something important, such as unmet expectations or broken trust, often leading to disappointment or sadness.',
+      ' A feeling of having lost something meaningful, such as unmet expectations or broken trust.                            ',
   },
   shame: {
     description:
-      'Feelings of being flawed, exposed, or unworthy in the eyes of oneself or others.',
+      ' A perception of personal flaw, exposure, or unworthiness in the eyes of oneself or others.                            ',
   },
   anxiety: {
     description:
-      'Feelings of worry about the future, uncertainty, and lack of control.',
+      ' A sense of unease related to uncertainty, lack of control, or concern about the future.                               ',
   },
   fear: {
     description:
-      'Feelings of wanting to escape or avoid a specific threat, danger, or unwanted outcome.',
+      ' A wish to avoid or escape from a perceived threat or unwanted outcome.                                                ',
   },
   fatigue: {
     description:
-      'Feelings of mental depletion, low energy, and desire to escape.',
+      ' A mental state of low energy or depletion, often leading to a desire to withdraw.                                     ',
   },
   emptiness: {
-    description: 'Feelings of inner void, lack of purpose or motivation.',
-  },
-  jealousy: {
-    description: 'Feelings of resentment when others have what one desires.',
+    description:
+      ' A sense of internal void, disconnection, or lack of motivation or purpose.                                            ',
   },
   disgust: {
-    description: 'Feelings of rejection, avoidance, and aversion.',
+    description:
+      ' A strong impulse of rejection or aversion toward something perceived as wrong or intolerable.                         ',
   },
 };
