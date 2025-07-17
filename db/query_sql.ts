@@ -120,6 +120,37 @@ export async function getAllPsycheEventsByUserId(sql: Sql, args: GetAllPsycheEve
     }));
 }
 
+export const getPsycheEventsByIdQuery = `-- name: GetPsycheEventsById :one
+SELECT id, user_id, metadata, happened_at, created_at FROM psyche_events
+WHERE id = $1`;
+
+export interface GetPsycheEventsByIdArgs {
+    id: string;
+}
+
+export interface GetPsycheEventsByIdRow {
+    id: string;
+    userId: string;
+    metadata: any;
+    happenedAt: Date;
+    createdAt: Date;
+}
+
+export async function getPsycheEventsById(sql: Sql, args: GetPsycheEventsByIdArgs): Promise<GetPsycheEventsByIdRow | null> {
+    const rows = await sql.unsafe(getPsycheEventsByIdQuery, [args.id]).values();
+    if (rows.length !== 1) {
+        return null;
+    }
+    const row = rows[0];
+    return {
+        id: row[0],
+        userId: row[1],
+        metadata: row[2],
+        happenedAt: row[3],
+        createdAt: row[4]
+    };
+}
+
 export const createPsycheEventQuery = `-- name: CreatePsycheEvent :one
 INSERT INTO psyche_events (user_id, metadata, happened_at) VALUES ($1, $2, $3)
 RETURNING id, user_id, metadata, happened_at, created_at`;
@@ -140,6 +171,40 @@ export interface CreatePsycheEventRow {
 
 export async function createPsycheEvent(sql: Sql, args: CreatePsycheEventArgs): Promise<CreatePsycheEventRow | null> {
     const rows = await sql.unsafe(createPsycheEventQuery, [args.userId, args.metadata, args.happenedAt]).values();
+    if (rows.length !== 1) {
+        return null;
+    }
+    const row = rows[0];
+    return {
+        id: row[0],
+        userId: row[1],
+        metadata: row[2],
+        happenedAt: row[3],
+        createdAt: row[4]
+    };
+}
+
+export const updatePsycheEventQuery = `-- name: UpdatePsycheEvent :one
+UPDATE psyche_events
+SET metadata = $2
+WHERE id = $1
+RETURNING id, user_id, metadata, happened_at, created_at`;
+
+export interface UpdatePsycheEventArgs {
+    id: string;
+    metadata: any;
+}
+
+export interface UpdatePsycheEventRow {
+    id: string;
+    userId: string;
+    metadata: any;
+    happenedAt: Date;
+    createdAt: Date;
+}
+
+export async function updatePsycheEvent(sql: Sql, args: UpdatePsycheEventArgs): Promise<UpdatePsycheEventRow | null> {
+    const rows = await sql.unsafe(updatePsycheEventQuery, [args.id, args.metadata]).values();
     if (rows.length !== 1) {
         return null;
     }

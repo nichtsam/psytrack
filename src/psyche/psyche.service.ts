@@ -2,12 +2,25 @@ import { Injectable } from '@nestjs/common';
 import { PostgresService } from '#src/db.module';
 import {
   AddExperienceDto,
-  ParseExperienceStoryDto as ParseExperienceStroyDto,
+  ParseStoryDto,
+  UpdateExperienceDto,
 } from './psyche.dto';
-import { createPsycheEvent, getAllPsycheEventsByUserId } from '#db/query_sql';
-import { Experience, ExperienceSchema } from './psyche.schema';
+import {
+  createPsycheEvent,
+  getAllPsycheEventsByUserId,
+  getPsycheEventsById,
+  updatePsycheEvent,
+} from '#db/query_sql';
+import {
+  ActivatingEventSchema,
+  CopingBehaviorSchema,
+  PostFeelingSchema,
+} from './psyche.schema';
 import { LLMService } from '#src/llm/llm.service';
 import { zodToJsonSchema } from 'zod-to-json-schema';
+import { PsycheError } from './psyche.error';
+import { merge } from 'ts-deepmerge';
+import { ZodObject } from 'zod';
 
 @Injectable()
 export class PsycheService {
@@ -23,53 +36,89 @@ export class PsycheService {
   }
 
   async createExperience(userId: string, dto: AddExperienceDto) {
-    const experience: Experience = {
-      activatingEvent: dto.activatingEvent,
-      emotions: dto.emotions,
-      summary: dto.summary,
-    };
-
     return await createPsycheEvent(this.postgresService.sql, {
       userId,
-      happenedAt: dto.happenedAt,
+      happenedAt: dto.activating.happenedAt,
       metadata: {
         type: 'experience',
-        ...experience,
+        ...dto,
       },
     });
   }
 
-  async parseExperienceStory(dto: ParseExperienceStroyDto) {
+  async updateExperience(id: string, dto: UpdateExperienceDto) {
+    const originalExperience = await getPsycheEventsById(
+      this.postgresService.sql,
+      {
+        id,
+      },
+    );
+
+    if (!originalExperience) {
+      throw new PsycheError(
+        'EVENT_NOT_FOUND',
+        'No record returned by the event id',
+      );
+    }
+
+    const updatedExperience = merge(originalExperience.metadata as object, dto);
+
+    return await updatePsycheEvent(this.postgresService.sql, {
+      id,
+      metadata: {
+        type: 'experience',
+        ...updatedExperience,
+      },
+    });
+  }
+
+  async parseExperienceActivatingStory(dto: ParseStoryDto) {
+    const schema = ActivatingEventSchema.omit({ happenedAt: true });
     const prompt = `
-You are an emotional assistant who extracts key mental information from user stories.
-Focus on three main parts:
-- Activating event: a concise, simple summary of the core event.
-- Emotions: a list of emotions with their intensity rated from 1 (lowest) to 10 (highest).
-- Summary: a compact description that captures the essential situation and emotional context, helping the user recall what happened and how they felt.
+Extract details from story based on given format. Respond in JSON.
+Event field should record the core activating factor.
+Emotions field should be a list of the emotions expressed.
+Summary field should include all the affecting details.
 
-Analyze the following user narrative carefully.
+${dto.story}`;
 
-User narrative:
-"""
-${dto.story}
-"""
+    const json = await this.parseStory(prompt, schema);
+    return schema.parse(json);
+  }
+  async parseExperienceCopingStory(dto: ParseStoryDto) {
+    const schema = CopingBehaviorSchema.omit({ endedAt: true });
+    const prompt = `
+Extract details from story based on given format. Respond in JSON.
+Approach field should record the core approach taken to cope with the event.
+Emotions field should be a list of the emotions emerged with the coping.
 
-Respond only with JSON strictly following the provided structure.
-`;
+${dto.story}`;
 
-    const format = zodToJsonSchema(ExperienceSchema);
+    const json = await this.parseStory(prompt, schema);
+    return schema.parse(json);
+  }
+  async parseExperiencePostStory(dto: ParseStoryDto) {
+    const schema = PostFeelingSchema.omit({ realizedAt: true });
+    const prompt = `
+Extract details from story based on given format. Respond in JSON.
+Thoughts field should record the core thoughts emerged after gaining distance from the event.
+Emotions field should be a list of the emotions emerged after gaining distance from the event.
+
+${dto.story}`;
+
+    const json = await this.parseStory(prompt, schema);
+    return schema.parse(json);
+  }
+
+  async parseStory(prompt: string, schema: ZodObject<any>) {
+    const format = zodToJsonSchema(schema);
     const response = await this.llmService.ollama.generate({
       model: 'phi4-mini:3.8b',
       prompt,
       format,
       stream: false,
-      options: {
-        temperature: 0,
-      },
     });
 
-    const json = JSON.parse(response.response) as unknown;
-    console.dir({ json }, { depth: Infinity });
-    return ExperienceSchema.parse(json);
+    return JSON.parse(response.response) as unknown;
   }
 }
