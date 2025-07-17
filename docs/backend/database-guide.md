@@ -3,6 +3,20 @@
 This document describes how to manage and interact with the PostgreSQL database in the backend codebase.  
 The most important configuration is the environment variable `DATABASE_URL`, which defines the connection string.
 
+## Overview
+
+As outlined in the main README.md, here’s a quick overview of the technologies we use for working with our database:
+
+- **Database:** PostgreSQL + Redis (via connection URL)
+- **Migrations:** Dbmate
+- **SQL Bindings:** sqlc (for type-safe SQL access)
+
+The general workflow is:
+
+1. Use Dbmate to create and apply migrations.
+2. Use `sqlc` (with a TypeScript plugin) to generate Typescript query functions, allowing us to write raw SQL in a clean, organized, and type-safe way, without relying on an ORM.
+3. In our NestJS app, we encapsulate the database connection in a dedicated module, ensuring it’s a singleton and can be injected where needed.
+
 ## Common Commands
 
 ```bash

@@ -18,7 +18,7 @@
 - **Package Manager:** pnpm v10
 - **Framework:** [NestJS](https://nestjs.com/) (TypeScript)
 - **Database:** PostgreSQL + Redis (via connection URL)
-- **Migrations:** DB Mate
+- **Migrations:** Dbmate
 - **SQL Bindings:** sqlc (for type-safe SQL access)
 - **Authentication:** JWT (stateless access & refresh tokens)
 - **Validation:** Zod
