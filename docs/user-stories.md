@@ -6,7 +6,6 @@ Each story reflects a goal or scenario from the user's perspective, helping us a
 ## 📝 Logging Emotional Events
 
 - As a user, I want to record my emotional experiences as they happen, so that I can later understand the context and patterns of my feelings.
-- As a user, I want to input triggering events, timestamps, emotions, and optional notes, so I can generate a structured record.
 - As a user, I want to describe the situation using natural language, so the system can help me convert it into a structured log with AI assistance.
 - As a user, I want to review and confirm AI-generated records before saving, so I maintain control over the accuracy of the data.
 
