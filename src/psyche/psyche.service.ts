@@ -75,10 +75,10 @@ export class PsycheService {
   async parseExperienceActivatingStory(dto: ParseStoryDto) {
     const schema = ActivatingEventSchema.omit({ happenedAt: true });
     const prompt = `
-Extract details from story based on given format. Respond in JSON.
-Event field should record the core activating factor.
-Emotions field should be a list of the emotions expressed.
-Summary field should include all the affecting details.
+Extract details from the input story and return the result in JSON format with the following fields:
+Headline: A brief phrase summarizing the core activating factor or incident.
+Emotions: A list of emotions explicitly or implicitly expressed.
+Story: A full account of the event, preserving as much detail and context as possible.
 
 ${dto.story}`;
 
@@ -88,9 +88,9 @@ ${dto.story}`;
   async parseExperienceCopingStory(dto: ParseStoryDto) {
     const schema = CopingBehaviorSchema.omit({ endedAt: true });
     const prompt = `
-Extract details from story based on given format. Respond in JSON.
-Approach field should record the core approach taken to cope with the event.
-Emotions field should be a list of the emotions emerged with the coping.
+Extract details from the input story and return the result in JSON format with the following fields:
+Approach: A concise description of the core coping strategy or action taken in response to the event.
+Emotions: A list of emotions that emerged as a result of the coping process, whether explicitly stated or implied.
 
 ${dto.story}`;
 
@@ -100,9 +100,9 @@ ${dto.story}`;
   async parseExperiencePostStory(dto: ParseStoryDto) {
     const schema = PostFeelingSchema.omit({ realizedAt: true });
     const prompt = `
-Extract details from story based on given format. Respond in JSON.
-Thoughts field should record the core thoughts emerged after gaining distance from the event.
-Emotions field should be a list of the emotions emerged after gaining distance from the event.
+Extract details from the input story and return the result in JSON format with the following fields:
+Thoughts: A concise description of the core thoughts that emerged after gaining distance from the event.
+Emotions: A list of emotions that emerged after gaining distance from the event, whether explicitly stated or implied.
 
 ${dto.story}`;
 

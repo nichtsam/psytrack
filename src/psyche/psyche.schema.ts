@@ -18,16 +18,18 @@ const maxMessage = (maxLength: number) =>
 
 export const ActivatingEventSchema = z
   .object({
-    event: z
+    headline: z
       .string()
       .max(100)
-      .describe('Brief description of the core activating factor'),
+      .describe(
+        'Concise headline capturing the core theme of the activating event',
+      ),
     happenedAt: z.coerce.date().describe('Time when the event occurred'),
     emotions: z
       .array(EmotionSchema)
       .default([])
       .describe('List of emotions felt during the event'),
-    summary: z
+    story: z
       .string()
       .min(10, minMessage(10))
       .max(500, maxMessage(500))
