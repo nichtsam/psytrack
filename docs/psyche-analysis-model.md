@@ -151,3 +151,26 @@ Vitality\ Conflict =
 0, & \text{otherwise}
 \end{cases}
 $$
+
+## Model Bias Risk Factors
+
+### Problem
+
+The psyche analysis model relies heavily on user input. These records are inherently incomplete and biased due to user behavior. If the analysis model treats this biased data as a complete representation of the user’s mental state, it will produce misleading trends and conclusions.
+
+### Examples of Bias
+
+- Logging only in certain emotions → skewed psyche dataset
+- Infrequent logging → Inaccuracy due to low sample size
+- Inconsistent frequency → temporal gaps misrepresent stability or volatility
+
+### Mitigation Strategies
+
+#### Confirmed
+
+1. Implement daily overall state logging – offer an optional, lightweight way to capture the general psychological state of each day, helping cover states missed in episodic records.
+2. Encourage active and diverse logging – promote broader recording of varied experiences, while clearly communicating that insight accuracy is closely tied to data completeness.
+
+#### Under Consideration
+
+1. Design data gap compensation mechanisms – apply default baseline values and incorporate their proportions into calculations, aiming to reduce distortion from missing entries.
