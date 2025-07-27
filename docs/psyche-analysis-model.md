@@ -30,6 +30,50 @@ By limiting inputs to a small set of well-defined, fundamental emotions, we make
 | emptiness   | negative | negative | A sense of internal void, disconnection, or lack of motivation or purpose.                                            |
 | disgust     | negative | negative | A strong impulse of rejection or aversion toward something perceived as wrong or intolerable.                         |
 
+## Psyche Record Structure
+
+### Experience
+
+An **Experience** represents an event that triggered emotional or mental fluctuation.
+Each record consists of three main sections:
+
+- **Activating Event**
+- **Coping Behavior**
+- **Post Event Mental State**
+
+These sections reflect the timeline of the emotional experience:
+
+- **Activating Event**: The core context that triggered the experience.
+- **Coping Behavior**: How the subject responded to manage or process the experience.
+- **Post Event Mental State**: The emotions and thoughts that emerged after gaining distance from the event.
+
+The **Activating Event** also contains a nested section: **Reaction**, which describes the immediate or short-term response to the event.
+
+#### Activating Event
+
+- **Headline**: One-sentence summary of the core situation.
+- **Story**: Description of the background and course of the event.
+- **Time**: When the event occurred.
+- **Activated Emotions** (optional): Emotions triggered in the moment. Absence may indicate numbness or unawareness.
+- **Reaction** (optional): Immediate or shortly-following reaction (see next section).
+
+#### Reaction (within Activating Event)
+
+- **Behavior**: Observable or remembered response during or shortly after the event.
+- **Result Emotions** (optional): Emotional state following the behavioral response. Absence may indicate numbness or unawareness.
+
+#### Coping Behavior
+
+- **Coping Method**: Strategies or actions used to deal with the experience.
+- **Result Emotions** (optional): Emotional state during the coping process. Absence may indicate numbness or unawareness.
+- **Coping Completion Time**: Subjective point when coping felt "done".
+
+#### Post Event Mental State (Meta Reflection)
+
+- **Thoughts** (optional): Reflections or realizations that emerged after the event.
+- **Result Emotions**: Emotional state at a distance from the original experience.
+- **Awareness Time**: When these thoughts or emotions became consciously accessible.
+
 ## Derived Indicators
 
 ### Valence
