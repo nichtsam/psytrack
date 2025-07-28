@@ -10,7 +10,21 @@ By limiting inputs to a small set of well-defined, fundamental emotions, we make
 - **Avoid Synonyms**: There should be only one label per emotional experience to maintain consistency and avoid redundancy.
 - **Objective, Without Intensity**: Descriptions should define the emotional quality without implying intensity, severity, or valence.
 
-## Emotion List
+## Emotion Structure
+
+### Emotion Values
+
+#### Valence
+
+Indicates how pleasant or unpleasant a psychological state feels — basically whether you feel good or bad.
+It can describe individual emotions, blends of feelings, or an overall mood over a period of time.
+
+#### Vitality
+
+Indicates the level of activation in a psychological state, ranging from a strong urge to act to an unwillingness to engage in any activity.
+Like valence, it can describe individual emotions, blends of feelings, or an overall mood over a period of time.
+
+### Fundamental Emotions
 
 | Name        | Valence  | Vitality | Description                                                                                                           |
 | ----------- | -------- | -------- | --------------------------------------------------------------------------------------------------------------------- |
@@ -31,6 +45,14 @@ By limiting inputs to a small set of well-defined, fundamental emotions, we make
 | disgust     | negative | negative | A strong impulse of rejection or aversion toward something perceived as wrong or intolerable.                         |
 
 ## Psyche Record Structure
+
+### Daily Vibe
+
+A **Daily Vibe** captures the overall mental state for a given day.
+It consists of two core dimensions:
+
+- **Valence**: How pleasant or unpleasant the day felt.
+- **Vitality**: How active or inactive the day felt, in terms of energy or willingness to act.
 
 ### Experience
 
@@ -168,8 +190,7 @@ The psyche analysis model relies heavily on user input. These records are inhere
 
 #### Confirmed
 
-1. Implement daily overall state logging – offer an optional, lightweight way to capture the general psychological state of each day, helping cover states missed in episodic records.
-2. Encourage active and diverse logging – promote broader recording of varied experiences, while clearly communicating that insight accuracy is closely tied to data completeness.
+1. Encourage active and diverse logging – promote broader recording of varied experiences, while clearly communicating that insight accuracy is closely tied to data completeness.
 
 #### Under Consideration
 
