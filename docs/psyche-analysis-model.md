@@ -46,12 +46,12 @@ Like valence, it can describe individual emotions, blends of feelings, or an ove
 
 ## Psyche Record Structure
 
-### Daily Vibe
+### Vibe
 
-A **Daily Vibe** captures the overall mental state for a given day.
+A **Vibe** captures the overall mental state for a given period of time.
 It consists of two core dimensions:
 
-- **Valence**: How pleasant or unpleasant the day felt.
+- **Valence**: How pleasant or unpleasant it felt.
 - **Vitality**: How active or inactive the day felt, in terms of energy or willingness to act.
 
 ### Experience
@@ -176,22 +176,30 @@ $$
 
 ## Model Bias Risk Factors
 
-### Problem
+### User Behavior Dependence
 
 The psyche analysis model relies heavily on user input. These records are inherently incomplete and biased due to user behavior. If the analysis model treats this biased data as a complete representation of the user’s mental state, it will produce misleading trends and conclusions.
 
-### Examples of Bias
+#### Examples of Bias
 
-- Logging only in certain emotions → skewed psyche dataset
-- Infrequent logging → Inaccuracy due to low sample size
-- Inconsistent frequency → temporal gaps misrepresent stability or volatility
+- Logging only in certain emotions -> skewed psyche dataset
+- Infrequent logging -> Inaccuracy due to low sample size
+- Inconsistent frequency -> temporal gaps misrepresent stability or volatility
 
-### Mitigation Strategies
+#### Mitigation Strategies
 
-#### Confirmed
+- Encourage active and diverse logging – promote broader recording of varied experiences, while clearly communicating that insight accuracy is closely tied to data completeness.
+- Design data gap compensation mechanisms – apply default baseline values and incorporate their proportions into calculations, aiming to reduce distortion from missing entries.
 
-1. Encourage active and diverse logging – promote broader recording of varied experiences, while clearly communicating that insight accuracy is closely tied to data completeness.
+### Circadian Rhythm and Timezone
 
-#### Under Consideration
+Certain analyses focus on the user’s circadian rhythm effects on emotions. Recording and considering timezone data per entry is essential to accurately capture these patterns.
 
-1. Design data gap compensation mechanisms – apply default baseline values and incorporate their proportions into calculations, aiming to reduce distortion from missing entries.
+#### Examples of Bias
+
+- Traveling across timezones -> disrupted circadian patterns
+
+#### Mitigation Strategies
+
+- Store all timestamps in UTC, with explicit timezone metadata per entry.
+- Convert to local circadian time when analyzing rhythm-related patterns.
