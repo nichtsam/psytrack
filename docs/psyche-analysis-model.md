@@ -96,41 +96,77 @@ The **Activating Event** also contains a nested section: **Reaction**, which des
 - **Result Emotions**: Emotional state at a distance from the original experience.
 - **Awareness Time**: When these thoughts or emotions became consciously accessible.
 
-## Derived Indicators
+## Derived Metrics
 
 ### Valence
 
-#### Definition
-
-Represents the overall emotional polarity — positive or negative tendency of the emotional state.
-
 #### Formula
 
-$$Valence = \frac{1}{n} \sum_{i=1}^n I_i \times V_i$$
+Valence is a signed number in the range [-10, +10]. Higher values indicate pleasantness; lower values indicate unpleasantness
 
-- $n$: Total number of emotions
-- $I_i$: Intensity of the $i$-th emotion (range: 1–10)
-- $V_i \in \{-1, 0, +1\}$: Valence polarity of the $i$-th emotion
-  - $-1$: negative
-  - $0$: neutral
-  - $+1$: positive
+##### Standalone
+
+Used to describe a macro-level emotional state without reference to specific emotions.
+
+$$\text{Valence} = \text{direct input} \in [-10, +10]$$
+
+##### Individual Emotion
+
+Derived from a single identified emotion.
+
+$$\text{Valence} = I_i \times V_i$$
+
+##### Multiple Emotions
+
+Derived from a set of emotions.
+
+$$\text{Valence} = \frac{1}{n} \sum_{i=1}^n I_i \times V_i$$
+
+$$
+\begin{aligned}
+n & : \text{Total number of emotions} \\
+I_i & : \text{Intensity of the } i\text{-th emotion (range: 1–10)} \\
+V_i & \in \{-1, 0, +1\} & : \text{Valence polarity of the } i\text{-th emotion} \\
+& \quad -1: \text{negative} \\
+& \quad\ 0: \text{neutral} \\
+& \quad+1: \text{positive}
+\end{aligned}
+$$
 
 ### Vitality
 
-#### Definition
-
-Measures the balance between energizing and draining energy in the emotional state, where positive values indicate predominance of energizing emotions, and negative values indicate predominance of draining emotions.
-
 #### Formula
 
-$$Vitality = \frac{1}{n} \sum_{i=1}^n I_i \times Vi_i$$
+Vitality is a signed number in the range [-10, +10]. Higher values indicate a more activated mental state; lower values indicate passivity or energy depletion.
 
-- $n$: Total number of emotions
-- $I_i$: Intensity of the $i$-th emotion (range: 1–10)
-- $V_i \in \{-1, 0, +1\}$: Vitality polarity of the $i$-th emotion
-  - $-1$: draining
-  - $0$: neutral
-  - $+1$: activating
+##### Standalone
+
+Used to describe a macro-level emotional state without reference to specific emotions.
+
+$$\text{Vitality} = \text{direct input} \in [-10, +10]$$
+
+##### Individual Emotion
+
+Derived from a single identified emotion.
+
+$$\text{Vitality} = I_i \times Vi_i$$
+
+##### Multiple Emotions
+
+Derived from a set of emotions.
+
+$$\text{Vitality} = \frac{1}{n} \sum_{i=1}^n I_i \times Vi_i$$
+
+$$
+\begin{align*}
+n & : \text{Total number of emotions} \\
+I_i & : \text{Intensity of the } i\text{-th emotion (range: 1–10)} \\
+V_i & \in \{-1, 0, +1\} & : \text{Vitality polarity of the } i\text{-th emotion} \\
+& \quad -1: \text{draining} \\
+& \quad\ 0: \text{neutral} \\
+& \quad+1: \text{activating}
+\end{align*}
+$$
 
 ### Valence Chaos
 
@@ -146,7 +182,7 @@ $$V_+ = \sum_{\{i | V_i > 0\}} I_i \times V_i, \quad V_- = \sum_{\{i | V_i < 0\}
 Then:
 
 $$
-Valence\ Chaos =
+\text{Valence Chaos} =
 \begin{cases}
 \frac{V_+ + V_-}{n}, & \text{if } V_+ > 0 \text{ and } V_- > 0 \\
 0, & \text{otherwise}
@@ -167,7 +203,7 @@ $$Vi_+ = \sum_{\{i | Vi_i > 0\}} I_i \times Vi_i, \quad Vi_- = \sum_{\{i | Vi_i 
 Then:
 
 $$
-Vitality\ Conflict =
+\text{Vitality Conflict} =
 \begin{cases}
 \frac{Vi_+ + Vi_-}{n}, & \text{if } Vi_+ > 0 \text{ and } Vi_- > 0 \\
 0, & \text{otherwise}
