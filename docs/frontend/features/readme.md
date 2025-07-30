@@ -1,7 +1,7 @@
-# Product Requirements Documents
+# Feature Specifications
 
-This folder contains product requirement documents (PRDs) for each core feature in the application.  
-Each PRD outlines the purpose, user goals, key components, and data requirements of the feature.
+This folder contains planning documents for each core feature in the application.
+Each document outlines the feature’s purpose, user goals, key components, and underlying data needs.
 
 ## Features
 

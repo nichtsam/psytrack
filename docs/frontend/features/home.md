@@ -1,4 +1,4 @@
-# Home – Product Requirements Document (PRD)
+# Home
 
 ## Purpose
 
@@ -45,7 +45,7 @@ Summary of recent overall emotional valence.
 
 #### Navigation
 
-TBD (dependent on Stats PRD).
+TBD (dependent on Stats feature).
 
 ### 3. Recent Energy (Vitality)
 
@@ -62,7 +62,7 @@ Summary of recent overall emotional vitality.
 
 #### Navigation
 
-TBD (dependent on Stats PRD).
+TBD (dependent on Stats feature).
 
 ### 5. Recent Dominant Emotions
 
@@ -79,7 +79,7 @@ Summary of the main emotions that stood out recently.
 
 #### Navigation
 
-TBD (dependent on Stats PRD).
+TBD (dependent on Stats feature).
 
 ### 5. Call For Clarity
 
@@ -96,7 +96,7 @@ Remind users to add missing details or clarify incomplete entries.
 
 #### Navigation
 
-TBD (dependent on History PRD).
+TBD (dependent on History feature).
 
 ### 6. Recent Experiences
 
@@ -113,4 +113,4 @@ Enable quick access for users to review or edit recent experiences.
 
 #### Navigation
 
-TBD (dependent on History PRD).
+TBD (dependent on History feature).
