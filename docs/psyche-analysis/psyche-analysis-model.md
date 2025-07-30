@@ -51,6 +51,13 @@ By limiting inputs to a small set of well-defined, fundamental emotions, we make
 
 ## Psyche Record Structure
 
+Psyche records are structured around two complementary layers: Vibe and Experience.
+
+- Vibe captures the **macro-level** mental state over time. It reflects the background mood or atmosphere, independent of specific events.
+- Experience captures the **micro-level** psychological impact of specific events. It details the emotional and mental processes triggered by meaningful situations.
+
+Together, they form a layered understanding of psychological states—broad ambient trends and deep event-driven dynamics.
+
 ### Vibe
 
 A **Vibe** captures the overall mental state for a given period of time.
