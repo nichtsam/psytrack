@@ -19,20 +19,20 @@ For future support of custom time ranges, two strategies are considered:
 2. Remove the exclusion constraint to allow overlaps, then rely on application-level logic to consolidate records and build the most accurate data.
 
 ```sql
-CREATE TABLE vibe (
+CREATE TABLE vibes (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   time_range TSTZRANGE NOT NULL,
   valence SMALLINT NOT NULL,
   vitality SMALLINT NOT NULL,
   created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
-  updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
 -- Extension required to support `EXCLUDE USING GIST`
 CREATE EXTENSION IF NOT EXISTS btree_gist;
 
-ALTER TABLE vibe
+ALTER TABLE vibes
 ADD CONSTRAINT vibe_no_overlap
 EXCLUDE USING GIST (
   user_id WITH =,
@@ -48,7 +48,7 @@ Due to the complex structure of Experience, and to balance flexibility with impl
 For specific queries requiring detailed data, we promote these to dedicated database columns and maintain synchronization at the application layer.
 
 ```sql
-CREATE TABLE experience (
+CREATE TABLE experiences (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   occurred_at TIMESTAMPTZ NOT NULL,
@@ -62,10 +62,10 @@ CREATE TABLE experience (
   details JSONB NOT NULL,
 
   created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
-  updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
-CREATE INDEX idx_experience_user_occurred_at ON experience (user_id, occurred_at);
+CREATE INDEX idx_experience_user_occurred_at ON experiences (user_id, occurred_at);
 ```
 
 #### Details Structure

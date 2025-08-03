@@ -1,14 +1,14 @@
 # PsyTrack
 
-**PsyTrack** is a mental state tracking tool designed to support self-reflection and personal insight. It helps users gain awareness of their internal states and promotes emotional clarity and personal growth.
+**PsyTrack** helps you journal and analyze your inner world.  
+Capture your emotions, experiences, reactions, and reflections in a structured way, and gain insight through data-driven visualizations and pattern recognition.
 
 ## Features
 
-- Create mental events to record your psychological state
-- Support for natural language input, converted into structured data via LLM
-- Visualize trends and changes in mental states
-- Generate mental analysis, reports, and suggestions using LLM
-- Engage in AI-assisted self-exploration conversations
+- Log vibes for overall psychological state tracking
+- Log experiences to capture detailed emotional events
+- Visualize trends, changes, and patterns over time
+- Natural language input powered by LLM, automatically structured
 
 ## Tech Stack
 
@@ -25,12 +25,5 @@
 
 ## Documentation
 
-- [User Stories](docs/user-stories.md) - User needs and feature descriptions
-- [Emotion Schema](docs/emotion-schema.md) - Core emotion categories and definitions
-
-### Backend
-
-- [System Overview](docs/backend/system-overview.md) - Overview of backend modules and responsibilities
-- [Getting Started](docs/backend/getting-started.md) - Backend setup and initial run instructions
-- [Database Guide](docs/backend/database-guide.md) - How to interact with the database, migrations, and sqlc usage
-- [LLM Architecture](docs/backend/llm-architecture.md) - Design and integration details of the LLM service
+Want a walkthrough of how this works and where to start?  
+👉 [Check out the Docs Walkthrough](./docs/README.md)
