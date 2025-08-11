@@ -1,0 +1,82 @@
+[
+  {
+    "user_email": "johndoe@example.com",
+    "occurred_at": "2025-08-10T14:23:00Z",
+    "activating_status": "field_completed",
+    "reaction_status": "field_completed",
+    "coping_status": "field_completed",
+    "post_status": "field_completed",
+    "details": {
+      "activating": {
+        "headline": "Unexpected meeting with a former colleague",
+        "story": "While getting coffee, I ran into a colleague I hadn't seen in years. The conversation brought back memories from a challenging project we worked on together.",
+        "emotions": [
+          { "emotionLabel": "attachment", "intensity": 7 },
+          { "emotionLabel": "anxiety", "intensity": 4 }
+        ],
+        "reaction": {
+          "behavior": "Engaged in small talk, asked about their current job.",
+          "resultedEmotions": [
+            { "emotionLabel": "hope", "intensity": 6 },
+            { "emotionLabel": "sadness", "intensity": 3 }
+          ]
+        }
+      },
+      "coping": {
+        "approach": "Reflected on past experiences during a short walk.",
+        "endedAt": "2025-08-10T15:10:00Z",
+        "emotions": [{ "emotionLabel": "contentment", "intensity": 6 }]
+      },
+      "post": {
+        "thoughts": "Realized that my career growth has been significant since then.",
+        "emotions": [{ "emotionLabel": "joy", "intensity": 7 }],
+        "realizedAt": "2025-08-10T18:45:00Z"
+      }
+    }
+  },
+  {
+    "user_email": "johndoe@example.com",
+    "occurred_at": "2025-08-08T09:15:00Z",
+    "activating_status": "emotions_unknown",
+    "reaction_status": "field_pending",
+    "coping_status": "field_na",
+    "post_status": "field_pending",
+    "details": {
+      "activating": {
+        "headline": "Received unexpected feedback from manager",
+        "story": "During the weekly check-in, my manager gave feedback about my recent work that I did not anticipate."
+      }
+    }
+  },
+  {
+    "user_email": "johndoe@example.com",
+    "occurred_at": "2025-08-02T20:40:00Z",
+    "activating_status": "field_completed",
+    "reaction_status": "emotions_unknown",
+    "coping_status": "field_completed",
+    "post_status": "field_completed",
+    "details": {
+      "activating": {
+        "headline": "Missed a close friend's birthday party",
+        "story": "I realized I had completely forgotten about my friend's birthday gathering because I was caught up in work deadlines.",
+        "emotions": [
+          { "emotionLabel": "shame", "intensity": 8 },
+          { "emotionLabel": "loss", "intensity": 5 }
+        ]
+      },
+      "coping": {
+        "approach": "Sent a heartfelt apology message and scheduled a lunch together.",
+        "endedAt": "2025-08-03T10:00:00Z",
+        "emotions": [
+          { "emotionLabel": "hope", "intensity": 5 },
+          { "emotionLabel": "anxiety", "intensity": 3 }
+        ]
+      },
+      "post": {
+        "thoughts": "Friendship can recover if I make an effort to reconnect.",
+        "emotions": [{ "emotionLabel": "attachment", "intensity": 8 }],
+        "realizedAt": "2025-08-04T08:20:00Z"
+      }
+    }
+  }
+]

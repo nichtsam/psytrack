@@ -11,6 +11,20 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
+-- Name: btree_gist; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS btree_gist WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION btree_gist; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION btree_gist IS 'support for indexing common datatypes in GiST';
+
+
+--
 -- Name: trigger_set_updated_at(); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -29,15 +43,24 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: psyche_events; Type: TABLE; Schema: public; Owner: -
+-- Name: experiences; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.psyche_events (
+CREATE TABLE public.experiences (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     user_id uuid NOT NULL,
-    metadata jsonb NOT NULL,
-    happened_at timestamp with time zone NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL
+    occurred_at timestamp with time zone NOT NULL,
+    activating_status text DEFAULT 'emotions_unknown'::text NOT NULL,
+    reaction_status text DEFAULT 'field_pending'::text NOT NULL,
+    coping_status text DEFAULT 'field_pending'::text NOT NULL,
+    post_status text DEFAULT 'field_pending'::text NOT NULL,
+    details jsonb NOT NULL,
+    created_at timestamp with time zone DEFAULT now() NOT NULL,
+    updated_at timestamp with time zone DEFAULT now() NOT NULL,
+    CONSTRAINT experiences_activating_status_check CHECK ((activating_status = ANY (ARRAY['emotions_unknown'::text, 'field_completed'::text]))),
+    CONSTRAINT experiences_coping_status_check CHECK ((coping_status = ANY (ARRAY['field_pending'::text, 'field_na'::text, 'emotions_unknown'::text, 'field_completed'::text]))),
+    CONSTRAINT experiences_post_status_check CHECK ((post_status = ANY (ARRAY['field_pending'::text, 'field_na'::text, 'field_completed'::text]))),
+    CONSTRAINT experiences_reaction_status_check CHECK ((reaction_status = ANY (ARRAY['field_pending'::text, 'field_na'::text, 'emotions_unknown'::text, 'field_completed'::text])))
 );
 
 
@@ -64,11 +87,26 @@ CREATE TABLE public.users (
 
 
 --
--- Name: psyche_events psyche_events_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: vibes; Type: TABLE; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.psyche_events
-    ADD CONSTRAINT psyche_events_pkey PRIMARY KEY (id);
+CREATE TABLE public.vibes (
+    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    user_id uuid NOT NULL,
+    time_range tstzrange NOT NULL,
+    valence smallint NOT NULL,
+    vitality smallint NOT NULL,
+    created_at timestamp with time zone DEFAULT now() NOT NULL,
+    updated_at timestamp with time zone DEFAULT now() NOT NULL
+);
+
+
+--
+-- Name: experiences experiences_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.experiences
+    ADD CONSTRAINT experiences_pkey PRIMARY KEY (id);
 
 
 --
@@ -96,10 +134,26 @@ ALTER TABLE ONLY public.users
 
 
 --
--- Name: idx_psyche_events_user_id; Type: INDEX; Schema: public; Owner: -
+-- Name: vibes vibe_no_overlap; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-CREATE INDEX idx_psyche_events_user_id ON public.psyche_events USING btree (user_id);
+ALTER TABLE ONLY public.vibes
+    ADD CONSTRAINT vibe_no_overlap EXCLUDE USING gist (user_id WITH =, time_range WITH &&);
+
+
+--
+-- Name: vibes vibes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.vibes
+    ADD CONSTRAINT vibes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: idx_experience_user_occurred_at; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_experience_user_occurred_at ON public.experiences USING btree (user_id, occurred_at);
 
 
 --
@@ -110,11 +164,19 @@ CREATE TRIGGER set_updated_at BEFORE UPDATE ON public.users FOR EACH ROW EXECUTE
 
 
 --
--- Name: psyche_events psyche_events_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: experiences experiences_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.psyche_events
-    ADD CONSTRAINT psyche_events_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(id) ON DELETE CASCADE;
+ALTER TABLE ONLY public.experiences
+    ADD CONSTRAINT experiences_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(id) ON DELETE CASCADE;
+
+
+--
+-- Name: vibes vibes_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.vibes
+    ADD CONSTRAINT vibes_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(id) ON DELETE CASCADE;
 
 
 --
@@ -128,4 +190,4 @@ ALTER TABLE ONLY public.psyche_events
 
 INSERT INTO public.schema_migrations (version) VALUES
     ('20250705202520'),
-    ('20250708221039');
+    ('20250811205146');
