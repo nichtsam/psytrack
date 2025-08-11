@@ -4,7 +4,7 @@ import {
   CreateUserArgs,
   getUserByEmail,
   getUserById,
-} from '#db/query_sql';
+} from '#db/queries/app/user_sql';
 import { PostgresService } from '#src/db.module';
 import { UserError } from './user.error';
 
