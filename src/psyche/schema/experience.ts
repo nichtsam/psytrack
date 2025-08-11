@@ -1,20 +1,23 @@
 import { z } from 'zod';
-import { emotions } from './constants/emotions';
-
-export const EmotionSchema = z.object({
-  emotionLabel: z.enum(emotions),
-  level: z
-    .number()
-    .int()
-    .min(1)
-    .max(10)
-    .describe('How strong the emotion feels, from 1 (low) to 10 (high)'),
-});
+import { EmotionSchema } from './emotion';
 
 const minMessage = (minLength: number) =>
   `Please provide at least ${minLength} characters so your description helps you quickly recall the experience.`;
 const maxMessage = (maxLength: number) =>
   `Please enter no more than ${maxLength} characters. Keep it concise and include just enough details to help you recall.`;
+
+export const ReactionSchema = z
+  .object({
+    behavior: z
+      .string()
+      .max(100)
+      .describe('Brief description of the behavioral reaction to the event'),
+    resultEmotions: z
+      .array(EmotionSchema)
+      .default([])
+      .describe('List of emotions felt after the reaction'),
+  })
+  .describe('How you reacted and the resulting emotions');
 
 export const ActivatingEventSchema = z
   .object({
@@ -34,21 +37,7 @@ export const ActivatingEventSchema = z
       .min(10, minMessage(10))
       .max(500, maxMessage(500))
       .describe('Detailed Summary of the activating event'),
-    reaction: z
-      .object({
-        behavior: z
-          .string()
-          .max(100)
-          .describe(
-            'Brief description of the behavioral reaction to the event',
-          ),
-        resultEmotions: z
-          .array(EmotionSchema)
-          .default([])
-          .describe('List of emotions felt after the reaction'),
-      })
-      .describe('How you reacted and the resulting emotions')
-      .optional(),
+    reaction: ReactionSchema.nullable().optional(),
   })
   .describe(
     'Details about the activating event that triggered emotional response',
@@ -95,12 +84,11 @@ export const PostFeelingSchema = z
 
 export const ExperienceSchema = z.object({
   activating: ActivatingEventSchema,
-  coping: CopingBehaviorSchema.optional(),
-  post: PostFeelingSchema.optional(),
+  coping: CopingBehaviorSchema.nullable().optional(),
+  post: PostFeelingSchema.nullable().optional(),
 });
 
 export type Experience = z.infer<typeof ExperienceSchema>;
 export type ActivatingEvent = z.infer<typeof ActivatingEventSchema>;
 export type CopingBehavior = z.infer<typeof CopingBehaviorSchema>;
 export type PostFeeling = z.infer<typeof PostFeelingSchema>;
-export type Emotion = z.infer<typeof EmotionSchema>;

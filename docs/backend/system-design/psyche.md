@@ -77,8 +77,8 @@ The JSONB field `details` contains data structured as follows (TypeScript schema
 ```ts
 type Details = {
   activating: Activating;
-  coping?: Coping;
-  post?: Post;
+  coping?: Coping | null;
+  post?: Post | null;
 };
 
 type Emotion = {
@@ -90,7 +90,7 @@ type Activating = {
   headline: string;
   story: string;
   emotions?: Emotion[];
-  reaction?: Reaction;
+  reaction?: Reaction | null;
 };
 type Reaction = {
   behavior: string;

@@ -1,0 +1,142 @@
+[
+  {
+    "user_email": "johndoe@example.com",
+    "valence": 5,
+    "vitality": 3,
+    "start": "2025-07-25T00:00:00.000Z",
+    "end": "2025-07-26T00:00:00.000Z"
+  },
+  {
+    "user_email": "johndoe@example.com",
+    "valence": -3,
+    "vitality": 1,
+    "start": "2025-07-26T00:00:00.000Z",
+    "end": "2025-07-27T00:00:00.000Z"
+  },
+  {
+    "user_email": "johndoe@example.com",
+    "valence": 8,
+    "vitality": -2,
+    "start": "2025-07-27T00:00:00.000Z",
+    "end": "2025-07-28T00:00:00.000Z"
+  },
+  {
+    "user_email": "johndoe@example.com",
+    "valence": 0,
+    "vitality": 0,
+    "start": "2025-07-28T00:00:00.000Z",
+    "end": "2025-07-29T00:00:00.000Z"
+  },
+  {
+    "user_email": "johndoe@example.com",
+    "valence": 7,
+    "vitality": 4,
+    "start": "2025-07-29T00:00:00.000Z",
+    "end": "2025-07-30T00:00:00.000Z"
+  },
+  {
+    "user_email": "johndoe@example.com",
+    "valence": -1,
+    "vitality": -6,
+    "start": "2025-07-30T00:00:00.000Z",
+    "end": "2025-07-31T00:00:00.000Z"
+  },
+  {
+    "user_email": "johndoe@example.com",
+    "valence": 3,
+    "vitality": 2,
+    "start": "2025-07-31T00:00:00.000Z",
+    "end": "2025-08-01T00:00:00.000Z"
+  },
+  {
+    "user_email": "johndoe@example.com",
+    "valence": -5,
+    "vitality": -1,
+    "start": "2025-08-01T00:00:00.000Z",
+    "end": "2025-08-02T00:00:00.000Z"
+  },
+  {
+    "user_email": "johndoe@example.com",
+    "valence": 6,
+    "vitality": 5,
+    "start": "2025-08-02T00:00:00.000Z",
+    "end": "2025-08-03T00:00:00.000Z"
+  },
+  {
+    "user_email": "johndoe@example.com",
+    "valence": -2,
+    "vitality": 3,
+    "start": "2025-08-03T00:00:00.000Z",
+    "end": "2025-08-04T00:00:00.000Z"
+  },
+  {
+    "user_email": "johndoe@example.com",
+    "valence": 4,
+    "vitality": -3,
+    "start": "2025-08-04T00:00:00.000Z",
+    "end": "2025-08-05T00:00:00.000Z"
+  },
+  {
+    "user_email": "johndoe@example.com",
+    "valence": -4,
+    "vitality": 1,
+    "start": "2025-08-05T00:00:00.000Z",
+    "end": "2025-08-06T00:00:00.000Z"
+  },
+  {
+    "user_email": "johndoe@example.com",
+    "valence": 2,
+    "vitality": 6,
+    "start": "2025-08-06T00:00:00.000Z",
+    "end": "2025-08-07T00:00:00.000Z"
+  },
+  {
+    "user_email": "johndoe@example.com",
+    "valence": -6,
+    "vitality": -4,
+    "start": "2025-08-07T00:00:00.000Z",
+    "end": "2025-08-08T00:00:00.000Z"
+  },
+  {
+    "user_email": "johndoe@example.com",
+    "valence": 1,
+    "vitality": 0,
+    "start": "2025-08-08T00:00:00.000Z",
+    "end": "2025-08-09T00:00:00.000Z"
+  },
+  {
+    "user_email": "johndoe@example.com",
+    "valence": -7,
+    "vitality": -2,
+    "start": "2025-08-09T00:00:00.000Z",
+    "end": "2025-08-10T00:00:00.000Z"
+  },
+  {
+    "user_email": "johndoe@example.com",
+    "valence": 9,
+    "vitality": 7,
+    "start": "2025-08-10T00:00:00.000Z",
+    "end": "2025-08-11T00:00:00.000Z"
+  },
+  {
+    "user_email": "johndoe@example.com",
+    "valence": -8,
+    "vitality": -5,
+    "start": "2025-08-11T00:00:00.000Z",
+    "end": "2025-08-12T00:00:00.000Z"
+  },
+  {
+    "user_email": "johndoe@example.com",
+    "valence": 0,
+    "vitality": 4,
+    "start": "2025-08-12T00:00:00.000Z",
+    "end": "2025-08-13T00:00:00.000Z"
+  },
+  {
+    "user_email": "johndoe@example.com",
+    "valence": 3,
+    "vitality": -1,
+    "start": "2025-08-13T00:00:00.000Z",
+    "end": "2025-08-14T00:00:00.000Z"
+  }
+]
