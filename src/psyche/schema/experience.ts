@@ -1,15 +1,5 @@
 import { z } from 'zod';
-import { emotions } from './constants/emotions';
-
-export const EmotionSchema = z.object({
-  emotionLabel: z.enum(emotions),
-  level: z
-    .number()
-    .int()
-    .min(1)
-    .max(10)
-    .describe('How strong the emotion feels, from 1 (low) to 10 (high)'),
-});
+import { EmotionSchema } from './emotion';
 
 const minMessage = (minLength: number) =>
   `Please provide at least ${minLength} characters so your description helps you quickly recall the experience.`;
@@ -103,4 +93,3 @@ export type Experience = z.infer<typeof ExperienceSchema>;
 export type ActivatingEvent = z.infer<typeof ActivatingEventSchema>;
 export type CopingBehavior = z.infer<typeof CopingBehaviorSchema>;
 export type PostFeeling = z.infer<typeof PostFeelingSchema>;
-export type Emotion = z.infer<typeof EmotionSchema>;
