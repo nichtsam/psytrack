@@ -1,6 +1,10 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+
 onlyBuiltDependencies:
-  - '@nestjs/core'
-  - '@scarf/scarf'
-  - '@swc/core'
+  - "@nestjs/core"
+  - "@scarf/scarf"
+  - "@swc/core"
   - argon2
   - esbuild
