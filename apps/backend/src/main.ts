@@ -13,7 +13,7 @@ const doc = (app: INestApplication) =>
     spec: {
       content: SwaggerModule.createDocument(
         app,
-        new DocumentBuilder().setTitle('PsyTrack').addBearerAuth().build(),
+        new DocumentBuilder().setTitle('Syke').addBearerAuth().build(),
       ),
     },
   });

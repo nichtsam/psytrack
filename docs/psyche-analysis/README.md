@@ -1,6 +1,6 @@
 # Psyche Analysis
 
-This folder contains documents that define the structure and logic of Psyche's psychological tracking and analysis system.
+This folder contains documents that define the structure and logic of Psyche's psychological journaling and analysis system.
 
 ## Contents
 

@@ -1,6 +1,6 @@
 {
-  "name": "psytrack-monorepo",
-  "description": "PsyTrack monorepo containing backend, mobile app, and shared packages",
+  "name": "syke-monorepo",
+  "description": "Syke monorepo containing backend, mobile app, and shared packages",
   "private": true,
   "license": "UNLICENSED",
   "author": {

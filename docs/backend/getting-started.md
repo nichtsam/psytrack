@@ -12,8 +12,8 @@ Please make sure the following tools are installed:
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/nichtsam/psytrack.git
-cd psytrack
+git clone https://github.com/nichtsam/syke.git
+cd syke
 
 # 2. Install dependencies
 pnpm install

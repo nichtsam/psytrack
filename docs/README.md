@@ -5,7 +5,7 @@ Hi there — I’ll walk you through everything so you can quickly get the big p
 ## The Goals
 
 Let’s start with the project’s purpose.
-PsyTrack helps you journal and analyze your psychological state.
+Syke helps you journal and analyze your psychological state.
 
 We start with [the User Stories](./user-stories.md), which outline the main goals we want to achieve.
 

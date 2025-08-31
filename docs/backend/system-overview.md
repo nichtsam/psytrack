@@ -1,6 +1,6 @@
 # System Overview (Backend)
 
-This document outlines the core backend modules of the PsyTrack system and their responsibilities.
+This document outlines the core backend modules of the Syke system and their responsibilities.
 
 ## Modules
 

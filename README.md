@@ -1,11 +1,11 @@
-# PsyTrack
+# Syke
 
-**PsyTrack** helps you journal and analyze your inner world.  
+**Syke** helps you journal and analyze your inner world.  
 Capture your emotions, experiences, reactions, and reflections in a structured way, and gain insight through data-driven visualizations and pattern recognition.
 
 ## Features
 
-- Log vibes for overall psychological state tracking
+- Log vibes for overall psychological state journaling
 - Log experiences to capture detailed emotional events
 - Visualize trends, changes, and patterns over time
 - Natural language input powered by LLM, automatically structured

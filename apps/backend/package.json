@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "0.0.1",
-  "description": "Backend for PsyTrack, helps you journal and analyze your inner world.",
+  "description": "Backend for Syke, helps you journal and analyze your inner world.",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {

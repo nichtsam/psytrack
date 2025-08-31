@@ -1,7 +1,7 @@
 # Psyche Analysis Model
 
 This document defines a standardized framework for capturing, recording, and analyzing psychological states.  
-It covers a curated set of fundamental emotions, structured data models for tracking psychological information, and formulas for deriving key psychological metrics.
+It covers a curated set of fundamental emotions, structured data models for journaling psychological information, and formulas for deriving key psychological metrics.
 
 ## Emotion Structure
 
@@ -20,8 +20,8 @@ Like valence, it can describe individual emotions, blends of feelings, or an ove
 ### Fundamental Emotions
 
 This section defines the core emotional categories used in the Psyche Analysis Model.  
-To ensure consistency in tracking and analysis, all emotional data across the system should be based on this standardized list.  
-By limiting inputs to a small set of well-defined, fundamental emotions, we make meaningful tracking and automated analysis possible — avoiding confusion and fragmentation caused by open-ended emotion input.
+To ensure consistency in journaling and analysis, all emotional data across the system should be based on this standardized list.  
+By limiting inputs to a small set of well-defined, fundamental emotions, we make meaningful journaling and automated analysis possible — avoiding confusion and fragmentation caused by open-ended emotion input.
 
 #### Guiding Principles
 
