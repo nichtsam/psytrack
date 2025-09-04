@@ -1,10 +1,12 @@
 packages:
-  - "apps/*"
-  - "packages/*"
+  - apps/*
+  - packages/*
+
+nodeLinker: hoisted
 
 onlyBuiltDependencies:
-  - "@nestjs/core"
-  - "@scarf/scarf"
-  - "@swc/core"
+  - '@nestjs/core'
+  - '@scarf/scarf'
+  - '@swc/core'
   - argon2
   - esbuild
